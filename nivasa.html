@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NIVASA — Your Stay. Your Food. Your People.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+  /* Main NIVASA Colours */
+  --navy:#12213E;
+  --navy-2:#1B2F52;
+
+  /* Softer Background */
+  --cream:#F7F5F0;
+  --paper:#FFFFFF;
+
+  /* Premium Muted Gold */
+  --marigold:#C9954D;
+  --marigold-deep:#A87535;
+
+  /* Calm Deep Teal */
+  --teal:#1F6F68;
+
+  /* Text Colours */
+  --ink:#1A1A1A;
+  --muted:#5B6472;
+
+  /* Borders */
+  --line:rgba(18,33,62,0.10);
+
+  /* Border Radius */
+  --radius-lg:28px;
+  --radius-md:18px;
+  --radius-sm:12px;
+
+  /* Shadow */
+  --shadow:0 20px 50px -20px rgba(18,33,62,0.25);
+}
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter', sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1240px; margin:0 auto; padding:0 32px;}
+  h1,h2,h3{font-family:'Fraunces', serif; line-height:1.05; letter-spacing:-0.01em;}
+  a{text-decoration:none; color:inherit;}
+  ul{list-style:none;}
+  button{font-family:inherit; cursor:pointer; border:none;}
+
+  /* ===== HEADER ===== */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(251,248,242,0.86);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 32px;
+    max-width:1240px; margin:0 auto;
+  }
+  .logo{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:30px;
+    letter-spacing:-0.02em;
+    color:var(--navy);
+  }
+  .logo span{color:var(--marigold-deep);}
+  nav.links{display:flex; gap:36px;}
+  nav.links a{
+    font-size:15px; font-weight:500; color:var(--navy);
+    position:relative; padding-bottom:4px;
+  }
+  nav.links a::after{
+    content:""; position:absolute; left:0; bottom:0; width:0; height:2px;
+    background:var(--marigold); transition:width .25s ease;
+  }
+  nav.links a:hover::after{width:100%;}
+  .cta-btn{
+    background:var(--navy); color:var(--cream);
+    padding:12px 26px; border-radius:100px;
+    font-weight:600; font-size:14.5px;
+    transition:transform .2s ease, background .2s ease;
+    white-space:nowrap;
+  }
+  .cta-btn:hover{background:var(--navy-2); transform:translateY(-1px);}
+  .burger{display:none; flex-direction:column; gap:5px; background:none;}
+  .burger span{width:24px; height:2px; background:var(--navy);}
+
+  /* ===== HERO ===== */
+  .hero{
+    padding:88px 0 60px;
+    position:relative;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center;
+  }
+  .eyebrow-tag{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--paper); border:1px solid var(--line);
+    padding:7px 16px 7px 8px; border-radius:100px;
+    font-size:13px; font-weight:600; color:var(--navy-2);
+    margin-bottom:22px;
+  }
+  .eyebrow-tag .dot{width:8px; height:8px; border-radius:50%; background:var(--marigold);}
+  .hero h1{
+    font-size:clamp(40px, 5vw, 64px);
+    color:var(--navy);
+    font-weight:600;
+    max-width:640px;
+  }
+  .hero h1 em{
+    font-style:italic; color:var(--marigold-deep);
+  }
+  .hero p.sub{
+    margin-top:22px; font-size:18px; line-height:1.6; color:var(--muted);
+    max-width:480px;
+  }
+  .hero-photos{
+    position:relative; height:480px;
+  }
+  .hero-photos img{
+    position:absolute; object-fit:cover; border-radius:var(--radius-md);
+    box-shadow:var(--shadow);
+  }
+  .ph1{width:64%; height:60%; top:0; right:0;}
+  .ph2{width:52%; height:46%; bottom:0; left:0; border:6px solid var(--cream);}
+  .float-card{
+    position:absolute; bottom:38px; right:12px;
+    background:var(--paper); padding:16px 20px; border-radius:var(--radius-sm);
+    box-shadow:var(--shadow); display:flex; align-items:center; gap:12px;
+    animation:floaty 5s ease-in-out infinite;
+  }
+  @keyframes floaty{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+  .float-card .avatars{display:flex;}
+  .float-card .avatars img{
+    width:30px; height:30px; border-radius:50%; border:2px solid #fff;
+    margin-left:-8px; box-shadow:none;
+  }
+  .float-card .avatars img:first-child{margin-left:0;}
+  .float-card strong{font-size:14px; display:block;}
+  .float-card small{color:var(--muted); font-size:12px;}
+
+  /* ===== SEARCH BAR ===== */
+  .search-panel{
+    margin-top:56px;
+    background:var(--paper);
+    border-radius:var(--radius-md);
+    box-shadow:var(--shadow);
+    padding:22px;
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr 1fr auto;
+    gap:14px;
+    align-items:end;
+  }
+  .field{display:flex; flex-direction:column; gap:6px;}
+  .field label{font-size:12px; font-weight:600; color:var(--muted); text-transform:none;}
+  .field select, .field input{
+    border:1px solid var(--line); border-radius:10px;
+    padding:12px 14px; font-size:14.5px; font-family:inherit;
+    background:var(--cream); color:var(--ink);
+  }
+  .search-btn{
+    background:var(--marigold); color:var(--navy);
+    padding:13px 28px; border-radius:10px; font-weight:700; font-size:15px;
+    transition:background .2s ease, transform .2s ease;
+  }
+  .search-btn:hover{background:var(--marigold-deep); color:#fff; transform:translateY(-1px);}
+
+  /* ===== SECTION HEADS ===== */
+  .section{padding:100px 0;}
+  .section-head{max-width:560px; margin-bottom:56px;}
+  .section-head h2{font-size:clamp(30px,3.4vw,42px); color:var(--navy); font-weight:600;}
+  .section-head p{margin-top:14px; color:var(--muted); font-size:16.5px; line-height:1.6;}
+
+  /* ===== CATEGORY CARDS ===== */
+  .cat-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:26px;
+  }
+  .cat-card{
+    background:var(--paper); border-radius:var(--radius-md);
+    overflow:hidden; border:1px solid var(--line);
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .cat-card:hover{transform:translateY(-6px); box-shadow:var(--shadow);}
+  .cat-card .img-box{height:200px; overflow:hidden;}
+  .cat-card .img-box img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease;}
+  .cat-card:hover .img-box img{transform:scale(1.06);}
+  .cat-card .body{padding:22px 24px 26px;}
+  .cat-card h3{font-size:20px; color:var(--navy); font-weight:600; margin-bottom:8px;}
+  .cat-card p{font-size:14.5px; color:var(--muted); line-height:1.55; margin-bottom:18px;}
+  .explore-link{
+    display:inline-flex; align-items:center; gap:8px;
+    font-weight:600; font-size:14px; color:var(--teal);
+  }
+  .explore-link .arrow{transition:transform .25s ease;}
+  .cat-card:hover .explore-link .arrow{transform:translateX(4px);}
+
+  /* ===== LIST PROPERTY SECTION ===== */
+  .list-section{
+    background:var(--navy); color:var(--cream);
+    border-radius:var(--radius-lg);
+    padding:70px 60px;
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:50px; align-items:center;
+    position:relative; overflow:hidden;
+  }
+  .list-section::before{
+    content:""; position:absolute; width:420px; height:420px; border-radius:50%;
+    background:radial-gradient(circle, rgba(242,166,59,0.18), transparent 70%);
+    top:-160px; right:-120px;
+  }
+  .list-section h2{color:var(--cream); font-size:clamp(28px,3.2vw,40px); font-weight:600; position:relative;}
+  .list-section p{margin-top:16px; color:rgba(251,248,242,0.72); font-size:16px; line-height:1.6; max-width:420px; position:relative;}
+  .list-tags{display:flex; flex-wrap:wrap; gap:10px; margin-top:24px; position:relative;}
+  .list-tags span{
+    border:1px solid rgba(251,248,242,0.28); padding:8px 16px; border-radius:100px; font-size:13.5px;
+  }
+  .list-cta{
+    margin-top:30px; display:inline-block; background:var(--marigold); color:var(--navy);
+    padding:16px 34px; border-radius:100px; font-weight:700; font-size:15.5px;
+    position:relative; transition:transform .2s ease;
+  }
+  .list-cta:hover{transform:translateY(-2px);}
+  .list-img{position:relative;}
+  .list-img img{border-radius:var(--radius-md); box-shadow:0 30px 60px -20px rgba(0,0,0,0.5);}
+
+  /* ===== WHY NIVASA ===== */
+  .why-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:2px;
+    background:var(--line); border-radius:var(--radius-md); overflow:hidden;
+  }
+  .why-card{
+    background:var(--paper); padding:36px 30px;
+    transition:background .25s ease;
+  }
+  .why-card:hover{background:#fff8ec;}
+  .why-icon{
+    width:46px; height:46px; border-radius:12px;
+    background:rgba(14,124,116,0.1); color:var(--teal);
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:18px; font-size:20px;
+  }
+  .why-card h3{font-family:'Fraunces',serif; font-size:18px; font-weight:600; color:var(--navy); margin-bottom:8px;}
+  .why-card p{font-size:14.5px; color:var(--muted); line-height:1.55;}
+
+  /* ===== FOOTER ===== */
+  footer{
+    background:var(--navy); color:var(--cream); margin-top:100px;
+    padding:70px 0 30px;
+  }
+  .footer-top{
+    display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:40px;
+    padding-bottom:44px; border-bottom:1px solid rgba(251,248,242,0.14);
+  }
+  .footer-brand .logo{color:var(--cream); margin-bottom:14px;}
+  .footer-brand .logo span{color:var(--marigold);}
+  .footer-brand p{color:rgba(251,248,242,0.65); font-size:14.5px; line-height:1.6; max-width:320px;}
+  .footer-col h4{font-size:14px; text-transform:uppercase; letter-spacing:0.06em; color:var(--marigold); margin-bottom:16px; font-weight:700;}
+  .footer-col a{
+    display:block; color:rgba(251,248,242,0.75); font-size:14.5px; margin-bottom:12px; transition:color .2s ease;
+  }
+  .footer-col a:hover{color:var(--cream);}
+  .footer-bottom{
+    padding-top:28px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;
+  }
+  .footer-credit strong{
+    display:block; font-family:'Fraunces',serif; font-size:15px; letter-spacing:0.03em; color:var(--marigold);
+  }
+  .footer-credit span{font-size:13.5px; color:rgba(251,248,242,0.6);}
+  .footer-meta{font-size:13px; color:rgba(251,248,242,0.5); text-align:right;}
+
+  @media (max-width: 980px){
+    nav.links{display:none;}
+    .burger{display:flex;}
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-photos{height:340px; margin-top:20px;}
+    .search-panel{grid-template-columns:1fr 1fr;}
+    .cat-grid{grid-template-columns:repeat(2,1fr);}
+    .list-section{grid-template-columns:1fr; padding:44px 28px;}
+    .list-img{order:-1;}
+    .why-grid{grid-template-columns:1fr 1fr;}
+    .footer-top{grid-template-columns:1fr;}
+  }
+  @media (max-width: 600px){
+    .wrap{padding:0 20px;}
+    .nav-row{padding:16px 20px;}
+    .search-panel{grid-template-columns:1fr;}
+    .cat-grid{grid-template-columns:1fr;}
+    .why-grid{grid-template-columns:1fr;}
+    .footer-bottom{flex-direction:column; align-items:flex-start;}
+    .footer-meta{text-align:left;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-row">
+    <a href="#" class="logo">NIVA<span>SA</span></a>
+    <nav class="links">
+      <a href="#">Home</a>
+      <a href="#categories">Find a Room</a>
+      <a href="#categories">Find Mess</a>
+      <a href="#categories">Find Roommate</a>
+      <a href="#list">List Your Property</a>
+    </nav>
+    <a href="#" class="cta-btn">Login / Sign Up</a>
+    <button class="burger"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow-tag"><span class="dot"></span> Built for students moving cities</div>
+        <h1>Find Your Perfect <em>Stay, Food</em> &amp; People.</h1>
+        <p class="sub">Discover verified rooms, flats, PGs, hostels, mess services and compatible roommates — all in one place.</p>
+      </div>
+      <div class="hero-photos">
+        <img class="ph1" src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80" alt="Shared student room">
+        <img class="ph2" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=80" alt="Cozy flat interior">
+        <div class="float-card">
+          <div class="avatars">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80" alt="">
+            <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=100&q=80" alt="">
+            <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=100&q=80" alt="">
+          </div>
+          <div>
+            <strong>2,400+ students</strong>
+            <small>found their stay this month</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-panel">
+      <div class="field">
+        <label>City</label>
+        <select><option>Select City</option><option>Pune</option><option>Nashik</option><option>Mumbai</option><option>Jalgaon</option><option>Bengaluru</option></select>
+      </div>
+      <div class="field">
+        <label>Area</label>
+        <select><option>Select Area</option><option>Near College</option><option>City Centre</option><option>Station Road</option></select>
+      </div>
+      <div class="field">
+        <label>Property Type</label>
+        <select><option>Any Type</option><option>Room</option><option>Flat</option><option>PG</option><option>Hostel</option></select>
+      </div>
+      <div class="field">
+        <label>Budget / Rent</label>
+        <select><option>Any Budget</option><option>Under ₹5,000</option><option>₹5,000–₹10,000</option><option>₹10,000+</option></select>
+      </div>
+      <button class="search-btn">Search</button>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="categories">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Everything a student needs, sorted.</h2>
+      <p>Browse verified listings across stay and food categories, curated for people settling into a new city.</p>
+    </div>
+    <div class="cat-grid">
+
+      <div class="cat-card">
+        <div class="img-box"><img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=700&q=80" alt="Rooms"></div>
+        <div class="body">
+          <h3>Rooms</h3>
+          <p>Single and shared rooms near your college, ready to move in.</p>
+          <a class="explore-link" href="#">Explore <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <div class="cat-card">
+        <div class="img-box"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=700&q=80" alt="Flats"></div>
+        <div class="body">
+          <h3>Flats</h3>
+          <p>1BHK and 2BHK apartments for students sharing with friends.</p>
+          <a class="explore-link" href="#">Explore <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <div class="cat-card">
+        <div class="img-box"><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=700&q=80" alt="PG"></div>
+        <div class="body">
+          <h3>PG Accommodation</h3>
+          <p>Managed paying-guest stays with meals and housekeeping included.</p>
+          <a class="explore-link" href="#">Explore <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <div class="cat-card">
+        <div class="img-box"><img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=700&q=80" alt="Hostels"></div>
+        <div class="body">
+          <h3>Hostels</h3>
+          <p>Budget-friendly hostels with verified safety and hygiene ratings.</p>
+          <a class="explore-link" href="#">Explore <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <div class="cat-card">
+        <div class="img-box"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=700&q=80" alt="Mess and Tiffin"></div>
+        <div class="body">
+          <h3>Mess &amp; Tiffin</h3>
+          <p>Home-style meal services delivered daily, rated by real students.</p>
+          <a class="explore-link" href="#">Explore <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <div class="cat-card">
+        <div class="img-box"><img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=700&q=80" alt="Roommates"></div>
+        <div class="body">
+          <h3>Roommates</h3>
+          <p>Match with people who share your college, budget and lifestyle.</p>
+          <a class="explore-link" href="#">Explore <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" id="list">
+  <div class="wrap">
+    <div class="list-section">
+      <div>
+        <h2>Have a Place? Earn With NIVASA.</h2>
+        <p>Reach students looking for trusted and affordable accommodation and services.</p>
+        <div class="list-tags">
+          <span>Room for Rent</span>
+          <span>Flat for Rent</span>
+          <span>PG</span>
+          <span>Hostel</span>
+          <span>Mess / Tiffin Service</span>
+        </div>
+        <a href="#" class="list-cta">List Your Property</a>
+      </div>
+      <div class="list-img">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=700&q=80" alt="List your property">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Why students choose NIVASA.</h2>
+      <p>Every listing is checked, every match is relevant, and every review comes from a real student.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">✓</div>
+        <h3>Verified Listings</h3>
+        <p>Every property is checked before it goes live, so you never deal with fake ads.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">₹</div>
+        <h3>Student-Friendly Prices</h3>
+        <p>Filter by real budgets, no hidden brokerage or inflated rent.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">◎</div>
+        <h3>Find Nearby Areas</h3>
+        <p>Search by distance from your college or workplace in seconds.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🍽</div>
+        <h3>Trusted Mess Services</h3>
+        <p>Home-style tiffin and mess partners rated by the students who eat there.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">◐</div>
+        <h3>Compatible Roommates</h3>
+        <p>Matched on lifestyle, budget and college — not just who asked first.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">★</div>
+        <h3>Ratings &amp; Reviews</h3>
+        <p>Honest feedback from real students who've actually stayed there.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="logo">NIVA<span>SA</span></a>
+        <p>Your Stay. Your Food. Your People. Bringing stay, food and people together on one platform for every student new to a city.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="#">Find a Room</a>
+        <a href="#">Find Mess</a>
+        <a href="#">Find Roommate</a>
+        <a href="#">List Your Property</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="#">Instagram — @jayesh._.0007</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Help Centre</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-credit">
+        <strong>BY TEAM INNOVEXA</strong>
+        <span>Founder: Jayesh Marathe</span>
+      </div>
+      <div class="footer-meta">© 2026 NIVASA. All Rights Reserved.</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
